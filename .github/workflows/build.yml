@@ -33,7 +33,7 @@ jobs:
               --generate-notes \
               --verify-tag \
               --notes \
-              "### Download \
+              "### Download <br /> \
               [${GITHUB_REPOSITORY#*/}-${tag#v}](${{ steps.artifact-upload-step.outputs.artifact-url }})"
           
 
