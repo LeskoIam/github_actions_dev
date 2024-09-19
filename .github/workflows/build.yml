@@ -15,15 +15,21 @@ jobs:
         with:
           name: github-actions-dev-${{ github.ref_name }}
           path: dist
-      - name: Create a Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}
+
+      - name: Output artifact ID
         run: |
-          gh release create "$tag" \
-              --repo="$GITHUB_REPOSITORY" \
-              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
-              --generate-notes
+          echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
+          echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs }}'
+
+#      - name: Create a Release
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          tag: ${{ github.ref_name }}
+#        run: |
+#          gh release create "$tag" \
+#              --repo="$GITHUB_REPOSITORY" \
+#              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+#              --generate-notes
           
 
 #        uses: comnoco/create-release-action@v2.0.5
