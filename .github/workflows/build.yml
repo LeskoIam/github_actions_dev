@@ -32,7 +32,9 @@ jobs:
               --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
               --generate-notes \
               --verify-tag \
-              --notes "### Download\n[${GITHUB_REPOSITORY#*/}-${tag#v}](${{ steps.artifact-upload-step.outputs.artifact-url }})"
+              --notes \
+              "### Download \
+              [${GITHUB_REPOSITORY#*/}-${tag#v}](${{ steps.artifact-upload-step.outputs.artifact-url }})"
           
 
 #        uses: comnoco/create-release-action@v2.0.5
