@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Archive package
         uses: actions/upload-artifact@v4
+        id: artifact-upload-step
         with:
           name: github-actions-dev-${{ github.ref_name }}
           path: dist
