@@ -11,10 +11,9 @@ tag = true
 push = true
 
 [bumpver.file_patterns]
-"README.md" = [
-    "{version}",
-    "{pep440_version}",
-]
+#"README.md" = [
+#    'Test version {version}',
+#]
 "bumpver.toml" = [
     'current_version = "{version}"',
 ]
