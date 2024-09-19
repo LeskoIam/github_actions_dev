@@ -17,20 +17,22 @@ jobs:
           name: github-actions-dev-${{ github.ref_name }}
           path: dist
 
-      - name: Output artifact ID
+      - name: Output artifact ID, URL
         run: |
           echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
-          echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs }}'
+          echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-url }}'
 
-#      - name: Create a Release
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          tag: ${{ github.ref_name }}
-#        run: |
-#          gh release create "$tag" \
-#              --repo="$GITHUB_REPOSITORY" \
-#              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
-#              --generate-notes
+      - name: Create a Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes \
+              --verify-tag
+              --notes "### Download [${GITHUB_REPOSITORY#*/}-${tag#v}](${{ steps.artifact-upload-step.outputs.artifact-url }})"
           
 
 #        uses: comnoco/create-release-action@v2.0.5
