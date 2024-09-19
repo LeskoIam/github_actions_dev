@@ -1,4 +1,4 @@
-Test version v0.0.10
+Test version v0.0.12
 # Start
 [github_actions_dev](https://github.com/LeskoIam/github_actions_dev)
 ## Create release
