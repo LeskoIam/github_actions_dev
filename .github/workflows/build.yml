@@ -31,7 +31,7 @@ jobs:
               --repo="$GITHUB_REPOSITORY" \
               --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
               --generate-notes \
-              --verify-tag
+              --verify-tag \
               --notes "### Download [${GITHUB_REPOSITORY#*/}-${tag#v}](${{ steps.artifact-upload-step.outputs.artifact-url }})"
           
 
